@@ -10,6 +10,14 @@ struct note {
 void structprnt(struct note *f){
   printf("Timbre=%s\tHertz=%d\n",f->timbre,f->hertz);
 }
+void print_list(struct note *g){
+  struct note* temp=g;
+  while(temp->next){
+    structprnt(temp);
+    temp=temp->next;
+  }
+  structprnt(temp);
+}
 struct note* insert_front(struct note* top, char* t, int hz){
   struct note* s=malloc(sizeof(struct note));
   strcpy(s->timbre, t);
