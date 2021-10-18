@@ -25,3 +25,15 @@ struct note* insert_front(struct note* top, char* t, int hz){
   s->next=top;
   return s;
 }
+struct note* free_list(struct note* start){
+  struct note* t=start;
+  struct note* t2;
+  struct note* t3=start;
+  while(t->next){
+    t2=t;
+    t=t->next;
+    free(t2);
+  }
+  free(t);
+  return t3;
+}
